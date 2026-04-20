@@ -23,6 +23,7 @@
       </van-cell>
     </van-cell-group>
 
+    <!-- 修正：标签名改为van-textarea -->
     <van-textarea v-model="extra_notes" rows="3" placeholder="其他说明（选填）" />
 
     <div style="margin-top:16px;">
@@ -33,8 +34,10 @@
 
 <script setup>
 import { ref } from 'vue'
+// 必须引入Vant样式，否则组件不渲染
 import 'vant/lib/index.css'
-import { Field as VanField, Button as VanButton, Radio as VanRadio, RadioGroup as VanRadioGroup, CellGroup as VanCellGroup, Cell as VanCell, Switch as VanSwitch, TextArea as VanTextArea } from 'vant'
+// 修正：导入名改为Textarea（全小写a）
+import { Field as VanField, Button as VanButton, Radio as VanRadio, RadioGroup as VanRadioGroup, CellGroup as VanCellGroup, Cell as VanCell, Switch as VanSwitch, Textarea as VanTextarea } from 'vant'
 import { postReport } from '../utils/api'
 import { useRouter } from 'vue-router'
 
@@ -49,7 +52,6 @@ const loading = ref(false)
 const router = useRouter()
 
 function showToast(msg){
-  // lightweight fallback
   alert(msg)
 }
 
@@ -66,7 +68,6 @@ async function onSubmit(){
       extra_notes: extra_notes.value
     }
     const res = await postReport(payload)
-    // store in localStorage and navigate
     localStorage.setItem('latest_report', JSON.stringify(res.data))
     router.push('/dashboard')
   }catch(e){
