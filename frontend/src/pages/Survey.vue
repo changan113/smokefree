@@ -13,12 +13,12 @@
     <van-cell-group>
       <van-cell title="环境是否密闭">
         <template #right-icon>
-          <van-switch v-model:checked="environment_enclosed" />
+          <van-switch v-model="environment_enclosed" />
         </template>
       </van-cell>
       <van-cell title="是否与吸烟者同住">
         <template #right-icon>
-          <van-switch v-model:checked="living_with_smoker" />
+          <van-switch v-model="living_with_smoker" />
         </template>
       </van-cell>
     </van-cell-group>
@@ -33,7 +33,8 @@
 
 <script setup>
 import { ref } from 'vue'
-import { Field as VanField, Button as VanButton, Radio as VanRadio, RadioGroup as VanRadioGroup, CellGroup as VanCellGroup, Cell as VanCell, Switch as VanSwitch, Textarea as VanTextarea } from 'vant'
+import 'vant/lib/index.css'
+import { Field as VanField, Button as VanButton, Radio as VanRadio, RadioGroup as VanRadioGroup, CellGroup as VanCellGroup, Cell as VanCell, Switch as VanSwitch, TextArea as VanTextArea } from 'vant'
 import { postReport } from '../utils/api'
 import { useRouter } from 'vue-router'
 
