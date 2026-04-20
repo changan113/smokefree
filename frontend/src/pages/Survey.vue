@@ -34,10 +34,6 @@
 
 <script setup>
 import { ref } from 'vue'
-// 必须引入Vant样式，否则组件不渲染
-import 'vant/lib/index.css'
-// 修正：导入名改为Textarea（全小写a）
-import { Field as VanField, Button as VanButton, Radio as VanRadio, RadioGroup as VanRadioGroup, CellGroup as VanCellGroup, Cell as VanCell, Switch as VanSwitch, Textarea as VanTextarea } from 'vant'
 import { postReport } from '../utils/api'
 import { useRouter } from 'vue-router'
 
@@ -51,9 +47,7 @@ const extra_notes = ref('')
 const loading = ref(false)
 const router = useRouter()
 
-function showToast(msg){
-  alert(msg)
-}
+function showToast(msg){ alert(msg) }
 
 async function onSubmit(){
   loading.value = true
