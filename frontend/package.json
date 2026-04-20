@@ -1,0 +1,19 @@
+{
+  "name": "smokefree-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.3.0",
+    "axios": "^1.4.0",
+    "vant": "^4.0.0",
+    "echarts": "^5.4.0"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
