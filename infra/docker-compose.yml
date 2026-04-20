@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: infra/Dockerfile.backend
+    ports:
+      - "8000:8000"
+    environment:
+      - DEESEEK_API_KEY=${DEESEEK_API_KEY}
+      - DEESEEK_URL=${DEESEEK_URL}
+    volumes:
+      - ./backend/smokefree.db:/app/backend/smokefree.db
+  frontend:
+    build:
+      context: .
+      dockerfile: infra/Dockerfile.frontend
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_BASE=http://localhost:8000
