@@ -13,17 +13,16 @@
     <van-cell-group>
       <van-cell title="环境是否密闭">
         <template #right-icon>
-          <van-switch v-model="environment_enclosed" />
+          <van-switch v-model:checked="environment_enclosed" />
         </template>
       </van-cell>
       <van-cell title="是否与吸烟者同住">
         <template #right-icon>
-          <van-switch v-model="living_with_smoker" />
+          <van-switch v-model:checked="living_with_smoker" />
         </template>
       </van-cell>
     </van-cell-group>
 
-    <!-- 修正：标签名改为van-textarea -->
     <van-textarea v-model="extra_notes" rows="3" placeholder="其他说明（选填）" />
 
     <div style="margin-top:16px;">
@@ -47,7 +46,10 @@ const extra_notes = ref('')
 const loading = ref(false)
 const router = useRouter()
 
-function showToast(msg){ alert(msg) }
+function showToast(msg){
+  // lightweight fallback
+  alert(msg)
+}
 
 async function onSubmit(){
   loading.value = true
@@ -62,6 +64,7 @@ async function onSubmit(){
       extra_notes: extra_notes.value
     }
     const res = await postReport(payload)
+    // store in localStorage and navigate
     localStorage.setItem('latest_report', JSON.stringify(res.data))
     router.push('/dashboard')
   }catch(e){
